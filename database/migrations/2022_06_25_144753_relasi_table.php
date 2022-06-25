@@ -20,6 +20,8 @@ class RelasiTable extends Migration
         Schema::table('absensi', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('ket_id')->nullable();
+            $table->foreign('ket_id')->references('id')->on('keterangan');
         });
     }
 
@@ -36,7 +38,9 @@ class RelasiTable extends Migration
         });
         Schema::table('absensi', function (Blueprint $table) {
             $table->dropColumn(['user_id']);
+            $table->dropColumn(['ket_id']);
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['ket_id']);
         });
     }
 }
