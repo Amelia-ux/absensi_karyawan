@@ -13,13 +13,13 @@ class RelasiTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $table){
+        Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('role_id')->nullable();
-            $table->foreign('role_id')->reference('id')->on('role');
+            $table->foreign('role_id')->references('id')->on('role');
         });
-        Schema::table('absensi', function(Blueprint $table){
+        Schema::table('absensi', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->reference('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -30,11 +30,11 @@ class RelasiTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function(Blueprint $table){
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn(['role_id']);
             $table->dropForeign(['role_id']);
         });
-        Schema::table('absensi', function(Blueprint $table){
+        Schema::table('absensi', function (Blueprint $table) {
             $table->dropColumn(['user_id']);
             $table->dropForeign(['user_id']);
         });

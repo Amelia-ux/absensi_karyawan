@@ -15,7 +15,6 @@ class CreateAbsensiTable extends Migration
     {
         Schema::create('absensi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("user_id")->nullable();
             $table->boolean("absen");
             $table->date("tgl");
             $table->timestamps();
