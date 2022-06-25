@@ -21,7 +21,7 @@ class RelasiTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('ket_id')->nullable();
-            $table->foreign('ket_id')->references('id')->on('keterangan');
+            $table->foreign('ket_id')->references('id')->on('ket_absensi');
         });
     }
 
