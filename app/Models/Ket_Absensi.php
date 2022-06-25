@@ -13,4 +13,8 @@ class Ket_Absensi extends Model
     protected $fillable = [
         'ket_absensi'
     ];
+    public function absensi()
+    {
+        return $this->hasMany(Absensi::class);
+    }
 }
