@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAbsensiTable extends Migration
+class KetAbsensi extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateAbsensiTable extends Migration
      */
     public function up()
     {
-        Schema::create('absensi', function (Blueprint $table) {
+        Schema::create('ket_absensi', function (Blueprint $table) {
             $table->id();
-            $table->date("tgl");
+            $table->string('ket_absensi', 100);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateAbsensiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('absensi');
+        Schema::dropIfExists('ket_absensi');
     }
 }
