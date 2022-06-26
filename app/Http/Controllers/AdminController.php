@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Absensi;
 use App\Models\Ket_Absensi;
+use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
     public function index()
     {
         $absensi = Absensi::with('ket_id')->get();
-        $paginate = Absensi::orderBy('id', 'desc')->paginate(3);
-        return view('adminHome', ['absensi' => $paginate]);
+        $user = User::with('role_id')->get();
+        $paginate = User::where('role_id', 2)->orderBy('id', 'asc')->paginate(3);
+        return view('adminHome', ['absensi' => $paginate,]);
     }
 
     public function create()
@@ -25,7 +28,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $absensi = new Absensi;
-        $absensi->tgl= $request->get('Tgl');
+        $absensi->tgl = $request->get('Tgl');
         $absensi->save();
 
         $ket_absensi = new Ket_Absensi;
@@ -53,13 +56,38 @@ class AdminController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'foto' => 'required',
+        ]);
+
+        $user = User::with('role_id')->where('id', $id)->first();
+
+        if ($user->foto && file_exists(storage_path('app/public' . $user->foto))) {
+            Storage::delete('public/' . $user->foto);
+        }
+
+        $imageName = $request->file('foto')->store('images', 'public');
+
+        $user->foto = $imageName;
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+
+        $role = new Role;
+        $role->id = request('role_id');
+
+        $user->role()->associate($role);
+        $user->save();
+
+        return redirect()->route('admin.index')
+            ->with('success', 'Karyawan Berhasil Diupdate');
     }
 
     public function destroy($id)
     {
         Absensi::where('id', $id)->delete();
-        return redirect()->route('mahasiswa.index')
-            ->with('success', 'Mahasiswa Berhasil Dihapus');
+        return redirect()->route('admin.index')
+            ->with('success', 'Karyawan Berhasil Dihapus');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 
+use App\Models\Absensi;
 use Illuminate\Http\Request;
 
 class KaryawanController extends Controller
@@ -15,33 +16,19 @@ class KaryawanController extends Controller
         return view('home');
     }
 
-    public function create()
+    public function absensi(Request $request)
     {
-        //
-    }
+        $this->validate($request, [
+            'users_id' => 'required',
+            'status' => 'required',
+            'keterangan' => 'required',
+        ]);
 
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($email)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
+        $absen = new Absensi;
+        $absen->users_id = $request->users_id;
+        $absen->status = $request->status;
+        $absen->keterangan = $request->keterangan;
+        $absen->save();
+        return back();
     }
 }
