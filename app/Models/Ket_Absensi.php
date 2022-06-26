@@ -11,10 +11,11 @@ class Ket_Absensi extends Model
     protected $table = 'ket_absensi';
 
     protected $fillable = [
-        'ket_absensi'
+        'keterangan'
     ];
+
     public function absensi()
     {
-        return $this->hasMany(Absensi::class);
+        return $this->belongsToMany(Absensi::class, 'ket_id');
     }
 }

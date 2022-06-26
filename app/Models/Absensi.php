@@ -15,4 +15,14 @@ class Absensi extends Model
     {
         return $this->belongsTo(Ket_Absensi::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function absensi()
+    {
+        return $this->belongsToMany(Absensi::class);
+    }
 }

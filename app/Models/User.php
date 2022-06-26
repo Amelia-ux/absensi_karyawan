@@ -20,7 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'foto',
+        // 'foto',
         'role_id',
         'password'
     ];
@@ -43,6 +43,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function absensi()
+    {
+        return $this->hasMany(Absensi::class, 'user_id', 'id');
+    }
 
     public function role()
     {
