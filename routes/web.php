@@ -27,3 +27,7 @@ Auth::routes();
 Route::get('/home', [KaryawanController::class, 'index'])->name('home');
 
 Route::get('admin/home', [AdminController::class, 'index'])->name('admin.home')->middleware('is_admin');
+
+Route::get('/main', function() {
+    return view('admin.home');
+});

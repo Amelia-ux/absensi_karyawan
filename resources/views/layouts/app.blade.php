@@ -1,32 +1,122 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ $title }}</title>
+    <title>Focus Admin: Table</title>
 
-    <!-- Custom fonts for this template-->
-    {{-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> --}}
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
 
-    <!-- Custom styles for this template-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
-    <link href="{{ asset('/css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
-
-
+    <!-- Styles -->
+    <link href="{{ asset('style/theme/css/lib/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/theme/css/lib/themify-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/theme/css/lib/menubar/sidebar.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/theme/css/lib/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/theme/css/lib/helper.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/theme/css/style.css') }}" rel="stylesheet">
 </head>
 
-<body id="page-top">
-    <div id="content">
-        @yield('content');
+<body>
+    <!-- jquery vendor -->
+    <script src="{{ asset('style/theme/js/lib/jquery.min.js') }}"></script>
+    <script src="{{ asset('style/theme/js/lib/jquery.nanoscroller.min.js') }}"></script>
+    <!-- nano scroller -->
+    <script src="{{ asset('style/theme/js/lib/menubar/sidebar.js') }}"></script>
+    <script src="{{ asset('style/theme/js/lib/preloader/pace.min.js') }}"></script>
+    <!-- sidebar -->
+    
+    <!-- bootstrap -->
+    <script src="{{ asset('style/theme/js/lib/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('style/theme/js/scripts.js') }}"></script>
+    <!-- scripit init-->
+
+        <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+            <div class="nano">
+                <div class="nano-content">
+                    <div class="logo"><a href="index.html"><!-- <img src="images/logo.png" alt="" /> --><span>Absensi Karyawan</span></a></div>
+                    <ul>
+                        <li class="label">Main</li>
+                        <li><a class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard</a>
+                        <li><a href="#"><i class="ti-user"></i> Profile</a></li>
+                        </li>
+
+                        <li class="label">Apps</li>
+                        <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i>  Data  <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                            <ul>
+                                <li><a href="chart-flot.html">Data Karyawan</a></li>
+                                <li><a href="chart-morris.html">Data Admin</a></li>
+                            </ul>
+                        </li>
+                        <li class="label">Features</li>
+                        <li><a href="#"><i class="ti-view-list-alt"></i>Absensi Karyawan</a></li>
+                        <li><a href="#"><i class="ti-files"></i>Cetak Laporan</a></li>
+                        </li>
+                        <li><a><i class="ti-close"></i> Logout</a></li>
+                </div>
+            </div>
+        </div>
+        <!-- /# sidebar -->
+
+
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="float-left">
+                        <div class="hamburger sidebar-toggle">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        <div class="dropdown dib">
+                            <div class="header-icon" data-toggle="dropdown">
+                                <span class="user-avatar">John
+                                    <i class="ti-angle-down f-s-10"></i>
+                                </span>
+                                <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-user"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-power-off"></i>
+                                                    <span>Logout</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    @yield('content');
+
 </body>
 
 </html>
