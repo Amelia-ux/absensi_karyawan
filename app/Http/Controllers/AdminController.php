@@ -90,4 +90,8 @@ class AdminController extends Controller
         return redirect()->route('admin.index')
             ->with('success', 'Karyawan Berhasil Dihapus');
     }
+
+    public function cetakAbsen($id)
+    {
+    }
 }
