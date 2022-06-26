@@ -47,13 +47,27 @@
     <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
             <div class="nano">
                 <div class="nano-content">
-                    <div class="logo"><a href=""><span>Absensi Karyawan</span></a></div>
+                    <div class="logo"><a href="/admin/home"><span>Administrator</span></a></div>
                     <ul>
                         <li class="label">Main</li>
-                        <li><a href="/home" class="sidebar-sub-toggle"><i class="ti-home"></i>Dashboard</a></li>
-                        <li><a href="/profile" class="sidebar-sub-toggle"><i class="ti-user"></i>Profile</a></li>
-                        <li><a href="/logout" class="sidebar-sub-toggle"><i class="ti-close"></i>Logout</a></li>
-                    </ul>
+                        <li><a href="/admin/home" class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard</a>
+                        <li><a href="/admin/profile"><i class="ti-user"></i> Profile</a></li>
+                        </li>
+
+                        <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i>  Data  
+                            <span class="sidebar-collapse-icon ti-angle-down"></span>
+                        </a>
+                            <ul>
+                                <li><a href="chart-flot.html">Data Karyawan</a></li>
+                                <li><a href="chart-morris.html">Data Admin</a></li>
+                            </ul>
+                        </li>
+                        <li class="label">Features</li>
+                        <li><a href="/admin/absensi"><i class="ti-view-list-alt"></i>Absensi Karyawan</a></li>
+                        <li><a href="/admin/karyawan"><i class="ti-view-list-alt"></i>Karyawan</a></li>
+                        <li><a href="/cetak"><i class="ti-files"></i>Cetak Laporan</a></li>
+                        </li>
+                        <li><a href="/logout"><i class="ti-close"></i> Logout</a></li>
                 </div>
             </div>
         </div>

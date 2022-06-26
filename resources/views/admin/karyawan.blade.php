@@ -44,24 +44,23 @@
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Nama Karyawan</th>
-                                                    <th>Keterangan Absensi</th>
-                                                    <th>Tanggal</th>
+                                                    <th>Email</th>
+                                                    <th>Foto</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($absensi as $a)
+                                                @foreach ($user as $u)
                                                     
                                                 <tr>
-                                                    <th scope="row">{{ $a->id }}</th>
-                                                    <td>{{ $a->user->name }}</td>
-                                                    <td>{{ $a->ket_id }}</td>
+                                                    <th scope="row">{{ $u->id }}</th>
+                                                    <td>{{ $u->name }}</td>
+                                                    <td>{{ $u->email }}</td>
                                                     <td><span class="badge badge-primary">Sale</span></td>
-                                                    <td>{{ $a->tgl }}</td>
                                                     <td>
                                                         
                                                             {{-- <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->nim) }}">Show</a> --}}
-                                                            <a class="btn btn-primary" href="/admin/editA/{{ $a->id }}">Edit</a>
+                                                            <a class="btn btn-primary" href="/admin/editU/{{ $u->id }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger">Delete</button>

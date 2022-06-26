@@ -15,7 +15,7 @@ class KetAbsensi extends Migration
     {
         Schema::create('ket_absensi', function (Blueprint $table) {
             $table->id();
-            $table->string('ket_absensi', 100);
+            $table->string('keterangan', 100);
             $table->timestamps();
         });
     }
