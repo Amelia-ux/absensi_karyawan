@@ -20,8 +20,8 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                                     <li class="breadcrumb-item active">Table-Basic</li>
+                                    <a href="/create" class="btn btn-success">Absensi Hari Ini</a>
                                 </ol>
-                                {{-- <a href="/absensi/{{ $absensi->user->id }}" class="btn btn-success">Absensi Hari Ini</a> --}}
                             </div>
                         </div>
                     </div>
