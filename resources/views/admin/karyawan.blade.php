@@ -1,9 +1,8 @@
 @extends('layouts.appAdmin')
 
 @section('content')
+    <div class="content-wrap">
 
-<div class="content-wrap">
-    
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
@@ -31,11 +30,11 @@
                 <section id="main-content">
                     <div class="row">
                         <!-- /# column -->
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-title">
                                     <h4>Table Hover </h4>
-                                    
+
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -43,29 +42,30 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
+                                                    <th>Foto</th>
                                                     <th>Nama Karyawan</th>
                                                     <th>Email</th>
-                                                    <th>Foto</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($user as $u)
-                                                    
-                                                <tr>
-                                                    <th scope="row">{{ $u->id }}</th>
-                                                    <td>{{ $u->name }}</td>
-                                                    <td>{{ $u->email }}</td>
-                                                    <td><span class="badge badge-primary">Sale</span></td>
-                                                    <td>
-                                                        
+                                                    <tr>
+                                                        <th scope="row">{{ $u->id }}</th>
+                                                        <td><img width="150px" src="{{ asset('storage/' . $u->foto) }}">
+                                                        </td>
+                                                        <td>{{ $u->name }}</td>
+                                                        <td>{{ $u->email }}</td>
+                                                        <td>
+
                                                             {{-- <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->nim) }}">Show</a> --}}
-                                                            <a class="btn btn-primary" href="/admin/editU/{{ $u->id }}">Edit</a>
+                                                            <a class="btn btn-primary"
+                                                                href="/admin/editU/{{ $u->id }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>

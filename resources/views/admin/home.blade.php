@@ -1,9 +1,8 @@
 @extends('layouts.appAdmin')
 
 @section('content')
+    <div class="content-wrap">
 
-<div class="content-wrap">
-    
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
@@ -31,11 +30,11 @@
                 <section id="main-content">
                     <div class="row">
                         <!-- /# column -->
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-title">
                                     <h4>Table Hover </h4>
-                                    
+
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -43,6 +42,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
+                                                    <th width="50px">Foto</th>
                                                     <th>Nama Karyawan</th>
                                                     <th>Keterangan Absensi</th>
                                                     <th>Tanggal</th>
@@ -51,22 +51,23 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($absensi as $a)
-                                                    
-                                                <tr>
-                                                    <th scope="row">{{ $a->id }}</th>
-                                                    <td>{{ $a->user->name }}</td>
-                                                    <td>{{ $a->ket_id }}</td>
-                                                    <td><span class="badge badge-primary">Sale</span></td>
-                                                    <td>{{ $a->tgl }}</td>
-                                                    <td>
-                                                        
+                                                    <tr>
+                                                        <th scope="row">{{ $a->id }}</th>
+                                                        <td><img width="150px" src="{{ asset('storage/' . $a->foto) }}">
+                                                        </td>
+                                                        <td>{{ $a->user->name }}</td>
+                                                        <td>{{ $a->ket_id }}</td>
+                                                        <td>{{ $a->tgl }}</td>
+                                                        <td>
+
                                                             {{-- <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->nim) }}">Show</a> --}}
-                                                            <a class="btn btn-primary" href="/admin/editA/{{ $a->id }}">Edit</a>
+                                                            <a class="btn btn-primary"
+                                                                href="/admin/editA/{{ $a->id }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
