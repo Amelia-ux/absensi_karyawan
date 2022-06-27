@@ -16,16 +16,16 @@ class KeteranganSeeder extends Seeder
     {
         $ket = [
             [
-                'ket_absensi' => 'Present',
+                'keterangan' => 'Present',
             ],
             [
-                'ket_absensi' => 'Late',
+                'keterangan' => 'Late',
             ],
             [
-                'ket_absensi' => 'Sick',
+                'keterangan' => 'Sick',
             ],
             [
-                'ket_absensi' => 'Absent'
+                'keterangan' => 'Absent'
             ],
         ];
 
