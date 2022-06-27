@@ -17,7 +17,7 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return view('admin.home', [
+    return view('layouts.auth', [
         'title' => 'Dashboard Admin'
     ]);
 });
