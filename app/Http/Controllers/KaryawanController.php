@@ -15,8 +15,9 @@ class KaryawanController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
+        $name = Auth::user()->name;
         $absensi = Absensi::with('user')->where('user_id', $id)->get();
-        return view('karyawan.home', ['absensi' => $absensi]);
+        return view('karyawan.home', ['absensi' => $absensi, 'username' => $name]);
     }
 
     public function absensi(Request $request)

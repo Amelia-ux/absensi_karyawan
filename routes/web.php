@@ -17,16 +17,15 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return view('layouts.auth', [
-        'title' => 'Dashboard Admin'
-    ]);
+     return view('admin.home');
 });
 
 Auth::routes();
 
 // Route::resource('admin', AdminController::class);
 
-Route::get('/home', [KaryawanController::class, 'index'])->name('home');
+Route::get('home', [KaryawanController::class, 'index'])->name('home');
+Route::get('absensi/{id}', [KaryawanController::class, 'absensi']);
 
 Route::get('admin/home', [AdminController::class, 'index'])->name('admin.home')->middleware('is_admin');
 Route::get('admin/karyawan', [AdminController::class, 'indexK'])->name('admin.karyawan');

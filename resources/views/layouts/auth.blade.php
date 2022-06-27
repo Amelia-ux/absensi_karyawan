@@ -37,7 +37,7 @@
                 <div class="col-lg-6">
                     <div class="login-content">
                         <div class="login-logo">
-                            <a href="index.html"><span>Sistem Absensi Karyawan</span></a>
+                            <span>Sistem Absensi Karyawan</span></a>
                         </div>
 
                         @yield('content')
