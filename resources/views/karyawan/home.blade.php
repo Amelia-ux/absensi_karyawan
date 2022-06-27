@@ -18,10 +18,9 @@
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Table-Basic</li>
-                                    <a href="/create" class="btn btn-success">Absensi Hari Ini</a>
+                                    <li class="breadcrumb-item active">Dashboard</li>
                                 </ol>
+                                <a href="/create" class="btn btn-info">Absensi Hari Ini</a>
                             </div>
                         </div>
                     </div>
@@ -31,10 +30,10 @@
                 <section id="main-content">
                     <div class="row">
     <!-- /# column -->
-    <div class="col-lg-6">
+    <div class="col-lg-12">
         <div class="card">
             <div class="card-title">
-                <h4>Table Hover </h4>
+                <h4>Absensi Karyawan </h4>
                 
             </div>
             <div class="card-body">

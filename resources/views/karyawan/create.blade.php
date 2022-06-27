@@ -13,7 +13,7 @@
                     <input type="radio" name="ket" id="ket" value="{{ $k->id }}"> {{ $k->keterangan }}  
                     @endforeach
                 </td>
-                <button type="submit" class="btn btn-success">Kirim</button>
+                <button type="submit" class="btn btn-info">Kirim</button>
             </form>
                 </div>
             </div>
