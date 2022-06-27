@@ -14,7 +14,7 @@ class AdminController extends Controller
     public function index()
     {
         $absensi = Absensi::with('ket_absensi')->get();
-        $absensi -> user = Absensi::with('user')->get();
+        $absensi->user = Absensi::with('user')->get();
         return view('admin.home', ['absensi' => $absensi]);
     }
 
@@ -55,12 +55,20 @@ class AdminController extends Controller
 
     public function storeU(Request $request)
     {
+        $imageName = '';
+
+        if ($request->file('foto')) {
+            $imageName = $request->file('foto')->store('images', 'public');
+        }
+
         $user = new User;
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->role_id = $request->get('role');
         $user->password = $request->get('password');
         $user->save();
+
+        $user->foto = $imageName;
 
         $role = new Role;
         $role->id = request('role');
@@ -101,7 +109,7 @@ class AdminController extends Controller
             'ket_id' => 'required',
         ]);
 
-        $absensi = Absensi::with('Ket_Absensi','User')->where('id', $id)->first();
+        $absensi = Absensi::with('Ket_Absensi', 'User')->where('id', $id)->first();
 
         // if ($user->foto && file_exists(storage_path('app/public' . $user->foto))) {
         //     Storage::delete('public/' . $user->foto);
