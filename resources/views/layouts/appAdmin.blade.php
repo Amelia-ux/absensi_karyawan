@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,83 +37,40 @@
     <script src="{{ asset('style/theme/js/lib/menubar/sidebar.js') }}"></script>
     <script src="{{ asset('style/theme/js/lib/preloader/pace.min.js') }}"></script>
     <!-- sidebar -->
-    
+
     <!-- bootstrap -->
     <script src="{{ asset('style/theme/js/lib/bootstrap.min.js') }}"></script>
     <script src="{{ asset('style/theme/js/scripts.js') }}"></script>
     <!-- scripit init-->
 
     <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
-            <div class="nano">
-                <div class="nano-content">
-                    <div class="logo"><a href="/admin/home"><span>Administrator</span></a></div>
-                    <ul>
-                        <li class="label">Main</li>
-                        <li><a href="/admin/home" class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard</a>
-                        <li><a href="/admin/profile"><i class="ti-user"></i> Profile</a></li>
-                        </li>
+        <div class="nano">
+            <div class="nano-content">
+                <div class="logo"><a href="/admin/home"><span>Administrator</span></a></div>
+                <ul>
+                    <li class="label">Main</li>
+                    <li><a href="/admin/home" class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard</a>
+                    <li><a href="/admin/profile"><i class="ti-user"></i> Profile</a></li>
+                    </li>
 
-                        <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i>  Data  
+                    <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Data
                             <span class="sidebar-collapse-icon ti-angle-down"></span>
                         </a>
-                            <ul>
-                                <li><a href="chart-flot.html">Data Karyawan</a></li>
-                                <li><a href="chart-morris.html">Data Admin</a></li>
-                            </ul>
-                        </li>
-                        <li class="label">Features</li>
-                        <li><a href="/admin/absensi"><i class="ti-view-list-alt"></i>Absensi Karyawan</a></li>
-                        <li><a href="/admin/karyawan"><i class="ti-view-list-alt"></i>Karyawan</a></li>
-                        <li><a href="/cetak"><i class="ti-files"></i>Cetak Laporan</a></li>
-                        </li>
-                        <li><a href="/logout"><i class="ti-close"></i> Logout</a></li>
-                </div>
-            </div>
-        </div>
-        <!-- /# sidebar -->
-
-    <div class="header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="float-left">
-                        <div class="hamburger sidebar-toggle">
-                            <span class="line"></span>
-                            <span class="line"></span>
-                            <span class="line"></span>
-                        </div>
-                    </div>
-                    <div class="float-right">
-                        <div class="dropdown dib">
-                            <div class="header-icon" data-toggle="dropdown">
-                                <span class="user-avatar">John
-                                    <i class="ti-angle-down f-s-10"></i>
-                                </span>
-                                <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
-                                    <div class="dropdown-content-body">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="ti-user"></i>
-                                                    <span>Profile</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="ti-power-off"></i>
-                                                    <span>Logout</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <ul>
+                            <li><a href="chart-flot.html">Data Karyawan</a></li>
+                            <li><a href="chart-morris.html">Data Admin</a></li>
+                        </ul>
+                    </li>
+                    <li class="label">Features</li>
+                    <li><a href="/admin/absensi"><i class="ti-view-list-alt"></i>Absensi Karyawan</a></li>
+                    <li><a href="/admin/karyawan"><i class="ti-view-list-alt"></i>Karyawan</a></li>
+                    <li><a href="/cetak"><i class="ti-files"></i>Cetak Laporan</a></li>
+                    </li>
+                    <li><a href="/logout"><i class="ti-close"></i> Logout</a></li>
             </div>
         </div>
     </div>
+    <!-- /# sidebar -->
 
     @yield('content');
 
