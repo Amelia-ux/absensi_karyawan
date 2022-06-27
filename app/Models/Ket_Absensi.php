@@ -16,6 +16,6 @@ class Ket_Absensi extends Model
 
     public function absensi()
     {
-        return $this->belongsToMany(Absensi::class, 'ket_id');
+        return $this->hasMany(Absensi::class);
     }
 }
