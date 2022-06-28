@@ -35,5 +35,6 @@ Route::get('admin/editU/{id}', [AdminController::class, 'editU']);
 Route::put('admin/updateU/{id}', [AdminController::class, 'updateU']);
 Route::put('admin/updateA/{id}', [AdminController::class, 'updateA']);
 Route::put('admin/deleteU/{id}', [AdminController::class, 'destroyU']);
+Route::put('cetak', [AdminController::class, 'cetakPDF'])->name('admin.cetakLaporan');
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
