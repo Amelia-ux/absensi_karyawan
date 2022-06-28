@@ -13,11 +13,11 @@ class Absensi extends Model
 
     public function ket_absensi()
     {
-        return $this->belongsTo(Ket_Absensi::class);
+        return $this->belongsTo(Ket_Absensi::class, 'ket_id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
