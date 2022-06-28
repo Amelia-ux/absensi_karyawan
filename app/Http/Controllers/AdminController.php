@@ -179,7 +179,14 @@ class AdminController extends Controller
             ->with('success', 'Data Karyawan Berhasil Dihapus');
     }
 
-    public function cetakAbsen($id)
+    public function cetakAbsen($user_id)
     {
+        $absen = Absensi::with('id')
+            ->where('user_id', $user_id)->get();
+        $absen->user = User::with('role_id')
+            ->where('id', $user_id)->first();
+
+        $cetakAbsen = PDF::loadview('admin.cetakLaporan', compact('user'));
+        return $cetakAbsen->stream();
     }
 }
