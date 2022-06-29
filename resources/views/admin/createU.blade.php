@@ -1,4 +1,4 @@
-@extends('layout.appAdmin')
+@extends('layouts.appAdmin')
 
 @section('content')
 
@@ -20,15 +20,15 @@
                     </ul>
                 </div>
                 @endif
-                <form method="post" action="{{ route('mahasiswa.store') }}" id="myForm">
+                <form method="post" action="storeU" id="myForm" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="Email">Email</label>
-                        <input type="email" name="Email" class="form-control" id="Email" aria-describedby="Email" >
+                        <input type="email" name="email" class="form-control" id="email" aria-describedby="email" >
                     </div>
                     <div class="form-group">
                         <label for="Name">Nama</label>
-                        <input type="text" name="Name" class="form-control" id="Name" ariadescribedby="Name" >
+                        <input type="text" name="name" class="form-control" id="name" ariadescribedby="name" >
                     </div>
                     <div class="form-group">
                         <label for="Role">Role</label>
@@ -40,11 +40,11 @@
                     </div>
                     <div class="form-group">
                         <label for="Password">Password</label>
-                        <input type="password" name="Password" class="form-control" id="Password" ariadescribedby="Password" >
+                        <input type="password" name="password" class="form-control" id="password" ariadescribedby="Password" >
                     </div>
                     <div class="form-group">
                         <label for="foto">Foto</label> <br>         
-                        <input type="file" name="foto" id="Foto">
+                        <input type="file" name="foto" id="foto">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

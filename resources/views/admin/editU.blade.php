@@ -16,7 +16,7 @@
                         </ul>
                     </div>
                 @endif
-                <form method="post" action="/admin/updateU/{{ $user->id }}" id="myForm">
+                <form method="post" action="/admin/updateU/{{ $user->id }}" id="myForm" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">

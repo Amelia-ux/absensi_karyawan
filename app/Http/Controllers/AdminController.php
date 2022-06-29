@@ -43,40 +43,28 @@ class AdminController extends Controller
         $absensi->tgl = $request->get('Tgl');
         $absensi->save();
 
-        $ket_absensi = new Ket_Absensi;
-        $ket_absensi->id = request('Ket_Absensi');
-
-        $ket_absensi->ket_absensi()->associate($ket_absensi);
-        $ket_absensi->save();
-
-        return redirect()->route('admin.index') //jika data berhasil ditambahkan kembali ke hal. utama
+        return view('admin.karyawan') //jika data berhasil ditambahkan kembali ke hal. utama
             ->with('success', 'Absensi Berhasil Ditambahkan');
     }
 
     public function storeU(Request $request)
     {
-        $imageName = '';
-
-        if ($request->file('foto')) {
-            $imageName = $request->file('foto')->store('images', 'public');
-        }
-
         $user = new User;
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->role_id = $request->get('role');
         $user->password = $request->get('password');
-        $user->save();
+        
+        $imageName='';
+
+        if ($request->file('foto')) {
+            $imageName = $request->file('foto')->store('images', 'public');
+        }
 
         $user->foto = $imageName;
+        $user->save();
 
-        $role = new Role;
-        $role->id = request('role');
-
-        $role->role()->associate($role);
-        $role->save();
-
-        return redirect()->route('admin.home') //jika data berhasil ditambahkan kembali ke hal. utama
+        return redirect()->route('admin.karyawan') //jika data berhasil ditambahkan kembali ke hal. utama
             ->with('success', 'Data User Berhasil Ditambahkan');
     }
 
@@ -145,13 +133,13 @@ class AdminController extends Controller
 
         $user = User::with('role')->where('id', $id)->first();
 
-        // if ($user->foto && file_exists(storage_path('app/public' . $user->foto))) {
-        //     Storage::delete('public/' . $user->foto);
-        // }
+        if ($user->foto && file_exists(storage_path('app/public' . $user->foto))) {
+            Storage::delete('public/' . $user->foto);
+        }
 
-        // $imageName = $request->file('foto')->store('images', 'public');
+        $imageName = $request->file('foto')->store('images', 'public');
 
-        // $user->foto = $imageName;
+        $user->foto = $imageName;
         $user->name = $request->get('name');
         $user->email = $request->get('email');
 
@@ -172,10 +160,10 @@ class AdminController extends Controller
             ->with('success', 'Data Absensi Berhasil Dihapus');
     }
 
-    public function destroyU($id)
+    public function destroyU($email)
     {
-        User::where('id', $id)->delete();
-        return redirect()->route('admin.home')
+        User::where('email', $email)->delete();
+        return redirect()->route('admin.karyawan')
             ->with('success', 'Data Karyawan Berhasil Dihapus');
     }
 

@@ -31,11 +31,14 @@ Route::post('absensi', [KaryawanController::class, 'absensi']);
 Route::get('admin/home', [AdminController::class, 'index'])->name('admin.home')->middleware('is_admin');
 Route::get('admin/karyawan', [AdminController::class, 'indexK'])->name('admin.karyawan');
 Route::get('admin/absensi', [AdminController::class, 'index']);
+Route::get('admin/createU', [AdminController::class, 'createU']);
+Route::post('admin/storeU', [AdminController::class, 'storeU']);
 Route::get('admin/editA/{id}', [AdminController::class, 'editA']);
 Route::get('admin/editU/{id}', [AdminController::class, 'editU']);
 Route::put('admin/updateU/{id}', [AdminController::class, 'updateU']);
 Route::put('admin/updateA/{id}', [AdminController::class, 'updateA']);
-Route::put('admin/deleteU/{id}', [AdminController::class, 'destroyU']);
+Route::post('admin/destroyU/{email}', [AdminController::class, 'destroyU']);
+Route::post('admin/destroyA/{id}', [AdminController::class, 'destroyA']);
 Route::put('cetak', [AdminController::class, 'cetakPDF'])->name('admin.cetakLaporan');
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

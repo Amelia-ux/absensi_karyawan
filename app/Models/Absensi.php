@@ -11,6 +11,12 @@ class Absensi extends Model
     use HasFactory;
     protected $table = 'absensi';
 
+    protected $fillable = [
+        'tgl',
+        'ket_id',
+        'user_id'
+    ];
+
     public function ket_absensi()
     {
         return $this->belongsTo(Ket_Absensi::class, 'ket_id');

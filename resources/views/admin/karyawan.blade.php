@@ -21,6 +21,7 @@
                                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                                     <li class="breadcrumb-item active">Table-Basic</li>
                                 </ol>
+                                <a href="/admin/createU" class="btn btn-info">Tambah User</a>
                             </div>
                         </div>
                     </div>
@@ -59,11 +60,12 @@
                                                         <td>
 
                                                             {{-- <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->nim) }}">Show</a> --}}
+                                                            <form action="/admin/destroyU/{{ $u->email }}" method="post">
                                                             <a class="btn btn-primary"
                                                                 href="/admin/editU/{{ $u->id }}">Edit</a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach

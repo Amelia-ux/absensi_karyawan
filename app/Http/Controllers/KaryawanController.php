@@ -9,6 +9,7 @@ use App\Models\Absensi;
 use App\Models\Ket_Absensi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class KaryawanController extends Controller
 {
@@ -37,18 +38,6 @@ class KaryawanController extends Controller
         $absensi->ket_id = $request->get('ket');
         $absensi->user_id = $id;
         $absensi->save();
-
-        $ket_absensi = new Ket_Absensi;
-        $ket_absensi->id = request('Ket_Absensi');
-
-        $ket_absensi->ket_absensi()->associate($ket_absensi);
-        $ket_absensi->save();
-
-        $user = new User;
-        $user->id = request('User');
-
-        $user->user()->associate($user);
-        $user->save();
 
         return redirect()->route('home') //jika data berhasil ditambahkan kembali ke hal. utama
             ->with('success', 'Absensi Telah Berhasil');
