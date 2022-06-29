@@ -20,7 +20,6 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item active">Dashboard</li>
                                 </ol>
-                                <a href="/create" class="btn btn-info">Absensi Hari Ini</a>
                             </div>
                         </div>
                     </div>
@@ -56,10 +55,7 @@
                                 <td>{{ $a->ket_id }}</td>
                                 <td>
                                     {{-- <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->nim) }}">Show</a> --}}
-                                    <a class="btn btn-primary" href="/admin/editA/{{ $a->id }}">Edit</a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <a class="btn btn-primary" href="edit/{{ $a->id }}">Absen</a>
                                 </td>
                             </tr>
                             @endforeach

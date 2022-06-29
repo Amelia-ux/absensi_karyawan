@@ -49,6 +49,11 @@ class AdminController extends Controller
 
     public function storeU(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'foto' => 'required',
+        ]);
         $user = new User;
         $user->name = $request->get('name');
         $user->email = $request->get('email');
@@ -120,7 +125,7 @@ class AdminController extends Controller
         $absensi->ket_absensi()->associate($ket_absensi);
         $absensi->save();
 
-        return redirect()->route('admin.home')
+        return redirect()->route('admin.karyawan')
             ->with('success', 'Data User Berhasil Diupdate');
     }
 
@@ -129,6 +134,7 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
+            'foto' => 'required',
         ]);
 
         $user = User::with('role')->where('id', $id)->first();

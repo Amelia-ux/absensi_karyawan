@@ -21,9 +21,11 @@ class KaryawanController extends Controller
         return view('karyawan.home', ['absensi' => $absensi, 'user' => $user]);
     }
 
-    public function create(){
-        $ket = Ket_Absensi::all();
-        return view('karyawan.create', ['ket' => $ket]);
+    public function edit($id){
+        $absensi = Absensi::with('Ket_Absensi')->where('id', $id)->get();
+        $ket_absensi = Ket_Absensi::all();
+        $user = User::all();
+        return view('admin.editA', ['ket_absensi' => $ket_absensi, 'absensi' => $ket_absensi]);
     }
 
     public function absensi(Request $request)

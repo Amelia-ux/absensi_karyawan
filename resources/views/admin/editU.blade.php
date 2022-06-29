@@ -20,30 +20,30 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label for="foto">Foto</label>
-                        <input type="file" name="foto" id="Foto" value="{{ $user->foto }}">
-                    </div>
-                    <div class="form-group">
                         <label for="Email">Email</label>
                         <input type="text" name="email" class="form-control" id="email"
-                            value="{{ $user->email }}" aria-describedby="email">
+                        value="{{ $user->email }}" aria-describedby="email">
                     </div>
                     <div class="form-group">
                         <label for="Name">Nama</label>
                         <input type="text" name="name" class="form-control" id="name"
                             value="{{ $user->name }}" ariadescribedby="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="Role">Role</label>
-                        <select name="role" id="role" class="form-control">
-                            @foreach ($role as $roles)
+                        </div>
+                        <div class="form-group">
+                            <label for="Role">Role</label>
+                            <select name="role" id="role" class="form-control">
+                                @foreach ($role as $roles)
                                 <option value="{{ $roles->id }}"
                                     {{ $user->role_id == $roles->id ? 'selected' : '' }}>{{ $roles->nama_role }}
                                 </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="foto">Foto</label>
+                            <input type="file" name="foto" id="Foto" value="{{ $user->foto }}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
