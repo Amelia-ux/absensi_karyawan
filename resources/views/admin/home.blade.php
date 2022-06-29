@@ -50,7 +50,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($absensi as $a)
+                                                @foreach ($paginate as $a)
                                                     <tr>
                                                         <th scope="row">{{ $a->id }}</th>
                                                         <td><img width="150px" src="{{ asset('storage/' . $a->foto) }}">
@@ -71,6 +71,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        {{ $paginate->links() }}
                                     </div>
                                 </div>
                             </div>

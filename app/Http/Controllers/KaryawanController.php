@@ -18,14 +18,14 @@ class KaryawanController extends Controller
     {
         $user = Auth::user();
         $absensi = Absensi::with('user')->where('user_id', $user->id)->get();
-        return view('karyawan.home', ['absensi' => $absensi, 'user' => $user]);
+        $paginate = Absensi::orderBy('tgl', 'desc')->paginate(7);
+        return view('karyawan.home', ['absensi' => $absensi, 'user' => $user, 'paginate' => $paginate]);
     }
 
     public function edit($id){
         $absensi = Absensi::with('Ket_Absensi')->where('id', $id)->get();
         $ket_absensi = Ket_Absensi::all();
-        $user = User::all();
-        return view('admin.editA', ['ket_absensi' => $ket_absensi, 'absensi' => $ket_absensi]);
+        return view('karyawan.edit', ['ket' => $ket_absensi, 'absensi' => $absensi]);
     }
 
     public function absensi(Request $request)

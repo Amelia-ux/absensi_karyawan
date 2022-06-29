@@ -15,7 +15,8 @@ class AdminController extends Controller
     {
         $absensi = Absensi::with('ket_absensi')->get();
         $absensi->user = Absensi::with('user')->get();
-        return view('admin.home', ['absensi' => $absensi]);
+        $paginate = Absensi::orderBy('tgl', 'desc')->paginate(7);
+        return view('admin.home', ['absensi' => $absensi, 'paginate' => $paginate]);
     }
 
     public function indexK()
@@ -84,7 +85,7 @@ class AdminController extends Controller
         $absensi = Absensi::with('Ket_Absensi')->where('id', $id)->get();
         $ket_absensi = Ket_Absensi::all();
         $user = User::all();
-        return view('admin.editA', ['user' => $user, 'ket_absensi' => $ket_absensi, 'absensi' => $ket_absensi]);
+        return view('admin.editA', ['user' => $user, 'ket_absensi' => $ket_absensi, 'absensi' => $absensi]);
     }
 
     public function editU($id)
