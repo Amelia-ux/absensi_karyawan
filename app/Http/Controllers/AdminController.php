@@ -8,6 +8,7 @@ use App\Models\Ket_Absensi;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class AdminController extends Controller
 {
