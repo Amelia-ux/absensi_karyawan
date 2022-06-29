@@ -31,7 +31,7 @@
 
                 <div class="row">
                     <div style="margin:0px 0px 0px 70px;">
-                        <a class="btn btn-success" href="{{ route('admin.cetakLaporan') }}">Cetak PDF</a>
+                        {{-- <a class="btn btn-success" href="{{ route('admin.cetakLaporan') }}">Cetak PDF</a> --}}
                     </div>
                 </div></br>
                 <section id="main-content">
