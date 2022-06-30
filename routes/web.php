@@ -25,6 +25,7 @@ Auth::routes();
 // Route::resource('admin', AdminController::class);
 
 Route::get('home', [KaryawanController::class, 'index'])->name('home');
+Route::get('profil', [KaryawanController::class, 'profil'])->name('profil');
 Route::get('edit/{id}', [KaryawanController::class, 'edit']);
 Route::post('absensi/{id}', [KaryawanController::class, 'absensi']);
 

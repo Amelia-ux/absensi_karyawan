@@ -56,12 +56,12 @@
                                                         <td>{{ $a->ket_id }}</td>
                                                         <td>{{ $a->tgl }}</td>
                                                         <td>
-
+                                                            <form action="/admin/destroyA/{{ $a->id }}" method="post">
                                                             <a class="btn btn-primary"
-                                                                href="/admin/editA/{{ $a->id }}">Edit</a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                                href="/admin/editU/{{ $a->id }}">Edit</a>
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach

@@ -22,6 +22,11 @@ class KaryawanController extends Controller
         return view('karyawan.home', ['absensi' => $absensi, 'user' => $user, 'paginate' => $paginate]);
     }
 
+    public function profil()
+    {
+        return view('karyawan.profil');
+    }
+
     public function edit($id){
         $absensi = Absensi::with('ket_absensi')->where('id', $id)->first();
         $ket_absensi = Ket_Absensi::all();
@@ -30,14 +35,14 @@ class KaryawanController extends Controller
 
     public function absensi(Request $request, $id)
     {
-        $absensi = Absensi::with('ket_absensi')->where('id', $id)->first();
+        $absensi1 = Absensi::with('Ket_Absensi')->where('id', $id)->first();
         $id = Auth::user()->id;
         $this->validate($request, [
             'ket' => 'required'
         ]);
 
         $absensi = new Absensi;
-        $absensi->tgl = $absensi->tgl;
+        $absensi->tgl = $absensi1->tgl;
         $absensi->ket_id = $request->get('ket');
         $absensi->user_id = $id;
 

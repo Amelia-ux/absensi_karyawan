@@ -156,7 +156,7 @@ class AdminController extends Controller
     public function destroyA($id)
     {
         Absensi::where('id', $id)->delete();
-        return redirect()->route('admin.index')
+        return redirect()->route('admin.home')
             ->with('success', 'Data Absensi Berhasil Dihapus');
     }
 
