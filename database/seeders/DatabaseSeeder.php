@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             KeteranganSeeder::class,
             CreateUsersSeeder::class,
+            AbsensiSeeder::class,
         ]);
     }
 }
