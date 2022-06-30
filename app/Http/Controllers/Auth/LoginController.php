@@ -49,7 +49,7 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
    
-        if(auth()->attempt(array('email' => $request->('email'), 'password' => $request->get('password'))))
+        if(auth()->attempt(array('email' => $request->get('email'), 'password' => $request->get('password'))))
         {
             if (Auth::user()->role_id == 1) {
                 return redirect()->route('admin.home');
