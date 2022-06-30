@@ -18,9 +18,12 @@
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                                     <li class="breadcrumb-item active">Table-Basic</li>
-                                    <a href="admin/createA" class="btn btn-success">Tambah Absensi</a>
+                                    <form action="/admin/createA" method="post">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success">Tambah Absensi</button>
+                                    </form>
                                 </ol>
                             </div>
                         </div>
@@ -53,15 +56,17 @@
                                                 @foreach ($paginate as $a)
                                                     <tr>
                                                         <th scope="row">{{ $a->id }}</th>
-                                                        <td>{{ $a->user->email }}</td>
+                                                        <td>{{ $a->user->name }}</td>
                                                         <td>{{ $a->ket_absensi->keterangan }}</td>
                                                         <td>{{ $a->tgl }}</td>
                                                         <td>
-                                                            <form action="/admin/destroyA/{{ $a->id }}" method="post">
-                                                            <a class="btn btn-primary"
-                                                                href="/admin/editA/{{ $a->id }}">Edit</a>
+                                                            <form action="/admin/destroyA/{{ $a->id }}"
+                                                                method="post">
+                                                                <a class="btn btn-primary"
+                                                                    href="/admin/editA/{{ $a->id }}">Edit</a>
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Delete</button>
                                                             </form>
                                                         </td>
                                                     </tr>
