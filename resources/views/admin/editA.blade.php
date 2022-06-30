@@ -21,7 +21,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="Tgl">Tanggal</label>
-                        <input type="date" name="tgl" class="form-control" id="tgl" value="{{ $absensi->tgl }}" aria-describedby="tgl" >
+                        <input type="date" name="tgl" class="form-control" id="tgl" value="{{ $absensi->tgl }}" aria-describedby="tgl">
                     </div>
                     <div class="form-group">
                         <label for="user">User</label>

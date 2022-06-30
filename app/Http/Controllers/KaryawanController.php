@@ -35,22 +35,21 @@ class KaryawanController extends Controller
 
     public function absensi(Request $request, $id)
     {
-        $absensi1 = Absensi::with('Ket_Absensi')->where('id', $id)->first();
+        $absensi = Absensi::with('Ket_Absensi')->where('id', $id)->first();
         $id = Auth::user()->id;
         $this->validate($request, [
             'ket' => 'required'
         ]);
 
-        $absensi = new Absensi;
-        $absensi->tgl = $absensi1->tgl;
+        $absensi->tgl = $absensi->tgl;
         $absensi->ket_id = $request->get('ket');
         $absensi->user_id = $id;
 
         $ket_absensi = new Ket_Absensi;
-        $ket_absensi->id = request('ket_absensi');
+        $ket_absensi->id = $request->get('ket');
 
         $user = new User;
-        $user->id = request('user');
+        $user->id = $id;
 
         $absensi->user()->associate($user);
         $absensi->ket_absensi()->associate($ket_absensi);

@@ -10,7 +10,7 @@
                 @csrf
                 <td>
                     @foreach($ket as $k)
-                    <input type="radio" name="ket" id="ket" value="{{ $k->id }}"> 
+                    <input type="radio" name="ket" id="ket" value="{{ $k->id }}"{{ $k->id == $absensi->ket_id ? "checked" : "" }}> 
                     <label for="">{{ $k->keterangan }}</label>
                     @endforeach
                 </td>

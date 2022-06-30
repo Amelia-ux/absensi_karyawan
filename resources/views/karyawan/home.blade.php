@@ -52,7 +52,7 @@
                             <tr>
                                 <th scope="row">{{ $a->id }}</th>
                                 <td>{{ $a->tgl }}</td>
-                                <td>{{ $a->ket_id }}</td>
+                                <td>{{ $a->ket_absensi->keterangan }}</td>
                                 <td>
                                     {{-- <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->nim) }}">Show</a> --}}
                                     <a class="btn btn-primary" href="edit/{{ $a->id }}">Absen</a>

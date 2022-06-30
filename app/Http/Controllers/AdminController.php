@@ -82,10 +82,10 @@ class AdminController extends Controller
 
     public function editA($id)
     {
-        $absensi = Absensi::with('Ket_Absensi')->where('id', $id)->first();
+        $absensi = Absensi::with('User')->where('id', $id)->first();
         $ket_absensi = Ket_Absensi::all();
         $user = User::all();
-        return view('admin.editA', ['user' => $user, 'ket' => $ket_absensi, 'absensi' => $absensi]);
+        return view('admin.editA', ['absensi' => $absensi, 'user' => $user, 'ket' => $ket_absensi]);
     }
 
     public function editU($id)
@@ -110,10 +110,10 @@ class AdminController extends Controller
         $absensi->ket_id = $request->get('ket');
 
         $ket_absensi = new Ket_Absensi;
-        $ket_absensi->id = request('ket_absensi');
+        $ket_absensi->id = $request->get('ket');
 
         $user = new User;
-        $user->id = request('user');
+        $user->id = $request->get('user');
 
         $absensi->user()->associate($user);
         $absensi->ket_absensi()->associate($ket_absensi);
