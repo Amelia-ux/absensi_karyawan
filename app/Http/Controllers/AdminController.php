@@ -8,13 +8,19 @@ use App\Models\Ket_Absensi;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        $paginate = Absensi::with('User','Ket_Absensi')->first()->orderBy('tgl', 'desc')->paginate(7);
-        return view('admin.home', ['paginate' => $paginate]);
+        if(Absensi::with('User', 'Ket_Absensi')->exists()){
+            $paginate = Absensi::with('User','Ket_Absensi')->first()->orderBy('tgl', 'desc')->paginate(7);
+            return view('admin.home', ['paginate' => $paginate]);
+        }else{
+            return view('admin.home');
+        }
+        
     }
 
     public function indexK()
@@ -30,8 +36,9 @@ class AdminController extends Controller
 
     public function createA()
     {
+        $user = User::all();
         $ket_absensi = Ket_Absensi::all();
-        return view('admin.createA', ['ket_absensi' => $ket_absensi]);
+        return view('admin.createA', ['ket_absensi' => $ket_absensi, 'user' => $user]);
     }
 
     public function createU()
@@ -42,12 +49,30 @@ class AdminController extends Controller
 
     public function storeA(Request $request)
     {
+        $id = Auth::user()->id;
+        $this->validate($request, [
+            'user' => 'required',
+            'ket' => 'required',
+            'tgl' => 'required'
+        ]);
+
         $absensi = new Absensi;
-        $absensi->tgl = $request->get('Tgl');
+        $absensi->tgl = $request->get('tgl');
+        $absensi->ket_id = $request->get('ket');
+        $absensi->user_id = $request->get('user');
+
+        $ket_absensi = new Ket_Absensi;
+        $ket_absensi->id = $request->get('ket');
+
+        $user = new User;
+        $user->id = $request->get('user');
+
+        $absensi->user()->associate($user);
+        $absensi->ket_absensi()->associate($ket_absensi);
         $absensi->save();
 
-        return view('admin.karyawan') //jika data berhasil ditambahkan kembali ke hal. utama
-            ->with('success', 'Absensi Berhasil Ditambahkan');
+        return redirect()->route('home') //jika data berhasil ditambahkan kembali ke hal. utama
+            ->with('success', 'Absensi Telah Berhasil di Tambahkan');
     }
 
     public function storeU(Request $request)

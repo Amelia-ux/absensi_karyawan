@@ -31,6 +31,7 @@ Route::get('admin/home', [AdminController::class, 'index'])->name('admin.home')-
 Route::get('admin/karyawan', [AdminController::class, 'indexK'])->name('admin.karyawan');
 Route::get('admin/absensi', [AdminController::class, 'index']);
 Route::get('admin/createU', [AdminController::class, 'createU']);
+Route::get('admin/createA', [AdminController::class, 'createA']);
 Route::post('admin/storeU', [AdminController::class, 'storeU']);
 Route::get('admin/profil', [AdminController::class, 'profil']);
 Route::get('admin/editA/{id}', [AdminController::class, 'editA']);

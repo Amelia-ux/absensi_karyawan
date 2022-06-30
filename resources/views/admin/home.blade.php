@@ -20,6 +20,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                                     <li class="breadcrumb-item active">Table-Basic</li>
+                                    <a href="admin/createA" class="btn btn-success">Tambah Absensi</a>
                                 </ol>
                             </div>
                         </div>
