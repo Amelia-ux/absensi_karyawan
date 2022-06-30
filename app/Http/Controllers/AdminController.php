@@ -13,10 +13,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $absensi = Absensi::with('ket_absensi')->get();
-        $absensi->user = Absensi::with('user')->get();
-        $paginate = Absensi::orderBy('tgl', 'desc')->paginate(7);
-        return view('admin.home', ['absensi' => $absensi, 'paginate' => $paginate]);
+        $paginate = Absensi::with('User','Ket_Absensi')->first()->orderBy('tgl', 'desc')->paginate(7);
+        return view('admin.home', ['paginate' => $paginate]);
     }
 
     public function indexK()
