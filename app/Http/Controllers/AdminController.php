@@ -82,10 +82,10 @@ class AdminController extends Controller
 
     public function editA($id)
     {
-        $absensi = Absensi::with('Ket_Absensi')->where('id', $id)->get();
+        $absensi = Absensi::with('Ket_Absensi')->where('id', $id)->first();
         $ket_absensi = Ket_Absensi::all();
         $user = User::all();
-        return view('admin.editA', ['user' => $user, 'ket_absensi' => $ket_absensi, 'absensi' => $absensi]);
+        return view('admin.editA', ['user' => $user, 'ket' => $ket_absensi, 'absensi' => $absensi]);
     }
 
     public function editU($id)
@@ -99,22 +99,15 @@ class AdminController extends Controller
     {
         $request->validate([
             'tgl' => 'required',
-            'user_id' => 'required',
-            'ket_id' => 'required',
+            'user' => 'required',
+            'ket' => 'required',
         ]);
 
         $absensi = Absensi::with('Ket_Absensi', 'User')->where('id', $id)->first();
 
-        // if ($user->foto && file_exists(storage_path('app/public' . $user->foto))) {
-        //     Storage::delete('public/' . $user->foto);
-        // }
-
-        // $imageName = $request->file('foto')->store('images', 'public');
-
-        // $user->foto = $imageName;
         $absensi->tgl = $request->get('tgl');
-        $absensi->user_id = $request->get('user_id');
-        $absensi->ket_id = $request->get('ket_id');
+        $absensi->user_id = $request->get('user');
+        $absensi->ket_id = $request->get('ket');
 
         $ket_absensi = new Ket_Absensi;
         $ket_absensi->id = request('ket_absensi');
@@ -126,7 +119,7 @@ class AdminController extends Controller
         $absensi->ket_absensi()->associate($ket_absensi);
         $absensi->save();
 
-        return redirect()->route('admin.karyawan')
+        return redirect()->route('admin.home')
             ->with('success', 'Data User Berhasil Diupdate');
     }
 

@@ -26,7 +26,7 @@ Auth::routes();
 
 Route::get('home', [KaryawanController::class, 'index'])->name('home');
 Route::get('edit/{id}', [KaryawanController::class, 'edit']);
-Route::post('absensi', [KaryawanController::class, 'absensi']);
+Route::post('absensi/{id}', [KaryawanController::class, 'absensi']);
 
 Route::get('admin/home', [AdminController::class, 'index'])->name('admin.home')->middleware('is_admin');
 Route::get('admin/karyawan', [AdminController::class, 'indexK'])->name('admin.karyawan');

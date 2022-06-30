@@ -17,28 +17,38 @@ class KaryawanController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $absensi = Absensi::with('user')->where('user_id', $user->id)->get();
+        $absensi = Absensi::with('user')->where('user_id', $user->id)->first();
         $paginate = Absensi::orderBy('tgl', 'desc')->paginate(7);
         return view('karyawan.home', ['absensi' => $absensi, 'user' => $user, 'paginate' => $paginate]);
     }
 
     public function edit($id){
-        $absensi = Absensi::with('Ket_Absensi')->where('id', $id)->get();
+        $absensi = Absensi::with('ket_absensi')->where('id', $id)->first();
         $ket_absensi = Ket_Absensi::all();
         return view('karyawan.edit', ['ket' => $ket_absensi, 'absensi' => $absensi]);
     }
 
-    public function absensi(Request $request)
+    public function absensi(Request $request, $id)
     {
+        $absensi = Absensi::with('ket_absensi')->where('id', $id)->first();
         $id = Auth::user()->id;
         $this->validate($request, [
             'ket' => 'required'
         ]);
 
         $absensi = new Absensi;
-        $absensi->tgl = Carbon::now();
+        $absensi->tgl = $absensi->tgl;
         $absensi->ket_id = $request->get('ket');
         $absensi->user_id = $id;
+
+        $ket_absensi = new Ket_Absensi;
+        $ket_absensi->id = request('ket_absensi');
+
+        $user = new User;
+        $user->id = request('user');
+
+        $absensi->user()->associate($user);
+        $absensi->ket_absensi()->associate($ket_absensi);
         $absensi->save();
 
         return redirect()->route('home') //jika data berhasil ditambahkan kembali ke hal. utama

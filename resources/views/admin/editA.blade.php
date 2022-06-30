@@ -25,16 +25,17 @@
                     </div>
                     <div class="form-group">
                         <label for="user">User</label>
-                        <select name="user_id" id="user_id" class="form-control">
+                        <select name="user" id="user" class="form-control">
                             @foreach ($user as $u)
                             <option value="{{ $u->id }}">{{ $u->name }}</option>
                             @endforeach
                         </select>   
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="foto">Foto</label> <br>         
-                        <input type="file" name="foto" id="Foto" value="{{ $Mahasiswa->foto }}">
-                    </div> --}}
+                    <div class="form-group">
+                        @foreach($ket as $k)
+                        <input type="radio" name="ket" id="ket" value="{{ $k->id }}"> {{ $k->keterangan }}  
+                        @endforeach
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

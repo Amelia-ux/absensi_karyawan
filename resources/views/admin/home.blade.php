@@ -42,7 +42,6 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th width="50px">Foto</th>
                                                     <th>Nama Karyawan</th>
                                                     <th>Keterangan Absensi</th>
                                                     <th>Tanggal</th>
@@ -53,14 +52,11 @@
                                                 @foreach ($paginate as $a)
                                                     <tr>
                                                         <th scope="row">{{ $a->id }}</th>
-                                                        <td><img width="150px" src="{{ asset('storage/' . $a->foto) }}">
-                                                        </td>
-                                                        <td>{{ $a->user->name }}</td>
+                                                        <td>{{ $a->user_id }}</td>
                                                         <td>{{ $a->ket_id }}</td>
                                                         <td>{{ $a->tgl }}</td>
                                                         <td>
 
-                                                            {{-- <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->nim) }}">Show</a> --}}
                                                             <a class="btn btn-primary"
                                                                 href="/admin/editA/{{ $a->id }}">Edit</a>
                                                             @csrf
