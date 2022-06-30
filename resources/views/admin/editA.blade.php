@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         @foreach($ket as $k)
-                        <input type="radio" name="ket" id="ket" value="{{ $k->id }}"> {{ $k->keterangan }}  
+                        <input type="radio" name="ket" id="ket" value="{{ $k->id }}" {{ $k->id == $absensi->ket_id ? "checked" : ""}}> {{ $k->keterangan }}  
                         @endforeach
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>

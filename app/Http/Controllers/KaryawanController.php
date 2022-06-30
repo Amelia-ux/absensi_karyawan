@@ -17,9 +17,9 @@ class KaryawanController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $absensi = Absensi::with('user')->where('user_id', $user->id)->first();
-        $paginate = Absensi::orderBy('tgl', 'desc')->paginate(7);
-        return view('karyawan.home', ['absensi' => $absensi, 'user' => $user, 'paginate' => $paginate]);
+        $absensi = Absensi::with('User','Ket_Absensi')->where('user_id', $user->id)->first()->orderBy('tgl', 'desc')->paginate(7);
+        // $paginate = Absensi::orderBy('tgl', 'desc')->paginate(7);
+        return view('karyawan.home', ['absensi' => $absensi, 'user' => $user]);
     }
 
     public function profil()

@@ -47,7 +47,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($paginate as $a)
+                            @foreach ($absensi as $a)
                             
                             <tr>
                                 <th scope="row">{{ $a->id }}</th>
@@ -61,7 +61,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $paginate->links() }}
+                    {{ $absensi->links() }}
                     
                 </div>
             </div>

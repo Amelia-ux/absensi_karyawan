@@ -52,8 +52,8 @@
                                                 @foreach ($paginate as $a)
                                                     <tr>
                                                         <th scope="row">{{ $a->id }}</th>
-                                                        <td>{{ $a->user_id }}</td>
-                                                        <td>{{ $a->ket_id }}</td>
+                                                        <td>{{ $a->user->email }}</td>
+                                                        <td>{{ $a->ket_absensi->keterangan }}</td>
                                                         <td>{{ $a->tgl }}</td>
                                                         <td>
                                                             <form action="/admin/destroyA/{{ $a->id }}" method="post">
