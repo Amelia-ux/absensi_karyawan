@@ -16,8 +16,9 @@ class AdminController extends Controller
     public function index()
     {
         if (Absensi::with('User', 'Ket_Absensi')->exists()) {
+            $user = User::all();
             $paginate = Absensi::with('User', 'Ket_Absensi')->first()->orderBy('tgl', 'desc')->paginate(7);
-            return view('admin.home', ['paginate' => $paginate]);
+            return view('admin.home', ['paginate' => $paginate, 'user' => $user]);
         } else {
             return view('admin.home');
         }
@@ -30,16 +31,17 @@ class AdminController extends Controller
         return view('admin.karyawan', ['user' => $user]);
     }
 
-    public function profil()
+    public function profile()
     {
-        return view('admin.home');
+        $user = Auth::user();
+        return view('admin.profile', ['user' => $user]);
     }
 
     public function createA()
     {
         $user = User::all();
         $ket_absensi = Ket_Absensi::all();
-        return view('admin.createA', ['ket_absensi' => $ket_absensi, 'user' => $user]);
+        return view('admin.createA', ['ket' => $ket_absensi, 'user' => $user]);
     }
 
     public function createU()
@@ -72,7 +74,7 @@ class AdminController extends Controller
         $absensi->ket_absensi()->associate($ket_absensi);
         $absensi->save();
 
-        return redirect()->route('home') //jika data berhasil ditambahkan kembali ke hal. utama
+        return redirect()->route('admin.home') //jika data berhasil ditambahkan kembali ke hal. utama
             ->with('success', 'Absensi Telah Berhasil di Tambahkan');
     }
 
