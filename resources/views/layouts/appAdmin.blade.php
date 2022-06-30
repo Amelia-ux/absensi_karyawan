@@ -52,15 +52,6 @@
                     <li><a href="/admin/home" class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard</a>
                     <li><a href="/admin/profil"><i class="ti-user"></i> Profile</a></li>
                     </li>
-
-                    <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Data
-                            <span class="sidebar-collapse-icon ti-angle-down"></span>
-                        </a>
-                        <ul>
-                            <li><a href="chart-flot.html">Data Karyawan</a></li>
-                            <li><a href="chart-morris.html">Data Admin</a></li>
-                        </ul>
-                    </li>
                     <li class="label">Features</li>
                     <li><a href="/admin/absensi"><i class="ti-view-list-alt"></i>Absensi Karyawan</a></li>
                     <li><a href="/admin/karyawan"><i class="ti-view-list-alt"></i>Karyawan</a></li>
