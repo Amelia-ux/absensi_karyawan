@@ -50,7 +50,7 @@
                 <ul>
                     <li class="label">Main</li>
                     <li><a href="/admin/home" class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard</a>
-                    <li><a href="/admin/profile"><i class="ti-user"></i> Profile</a></li>
+                    <li><a href="/admin/profil"><i class="ti-user"></i> Profile</a></li>
                     </li>
 
                     <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Data

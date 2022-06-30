@@ -24,6 +24,10 @@ class AdminController extends Controller
         return view('admin.karyawan', ['user' => $user]);
     }
 
+    public function profil(){
+        return 
+    }
+
     public function createA()
     {
         $ket_absensi = Ket_Absensi::all();

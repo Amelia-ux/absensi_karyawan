@@ -22,8 +22,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::resource('admin', AdminController::class);
-
 Route::get('home', [KaryawanController::class, 'index'])->name('home');
 Route::get('profil', [KaryawanController::class, 'profil'])->name('profil');
 Route::get('edit/{id}', [KaryawanController::class, 'edit']);
@@ -34,6 +32,7 @@ Route::get('admin/karyawan', [AdminController::class, 'indexK'])->name('admin.ka
 Route::get('admin/absensi', [AdminController::class, 'index']);
 Route::get('admin/createU', [AdminController::class, 'createU']);
 Route::post('admin/storeU', [AdminController::class, 'storeU']);
+Route::get('admin/profil', [AdminController::class, 'profil']);
 Route::get('admin/editA/{id}', [AdminController::class, 'editA']);
 Route::get('admin/editU/{id}', [AdminController::class, 'editU']);
 Route::put('admin/updateU/{id}', [AdminController::class, 'updateU']);
