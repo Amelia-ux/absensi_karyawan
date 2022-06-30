@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Absensi;
 use App\Models\Ket_Absensi;
-use App\Models\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        if(Absensi::with('User', 'Ket_Absensi')->exists()){
-            $paginate = Absensi::with('User','Ket_Absensi')->first()->orderBy('tgl', 'desc')->paginate(7);
+        if (Absensi::with('User', 'Ket_Absensi')->exists()) {
+            $paginate = Absensi::with('User', 'Ket_Absensi')->first()->orderBy('tgl', 'desc')->paginate(7);
             return view('admin.home', ['paginate' => $paginate]);
-        }else{
+        } else {
             return view('admin.home');
         }
-        
     }
 
     public function indexK()
@@ -30,7 +30,8 @@ class AdminController extends Controller
         return view('admin.karyawan', ['user' => $user]);
     }
 
-    public function profil(){
+    public function profil()
+    {
         return view('admin.home');
     }
 
@@ -81,14 +82,17 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required',
             'foto' => 'required',
+            'password' => 'required',
         ]);
+
         $user = new User;
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->role_id = $request->get('role');
-        $user->password = $request->get('password');
-        
-        $imageName='';
+        $password = $request->get('password');
+        $user->password = Hash::make($password);
+
+        $imageName = '';
 
         if ($request->file('foto')) {
             $imageName = $request->file('foto')->store('images', 'public');
