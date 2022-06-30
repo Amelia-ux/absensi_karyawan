@@ -16,10 +16,10 @@
     <table class="table table-striped mt-2">
         <th>Absensi</th>
         <th>Keterangan</th>
-        @foreach ($absensi as $a)
+        @foreach ($absen as $a)
             <tr>
-                <td>{{ $a->ket_id }}</td>
-                <td>{{ $a->ket_id->keterangan }}</td>
+                <td>{{ $a->tgl }}</td>
+                <td>{{ $a->ket_absensi->keterangan }}</td>
             </tr>
         @endforeach
     </table>

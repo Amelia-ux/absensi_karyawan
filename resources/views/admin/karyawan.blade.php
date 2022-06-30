@@ -67,9 +67,10 @@
 
                                                             {{-- <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->nim) }}">Show</a> --}}
                                                             <form action="/admin/destroyU/{{ $u->email }}" method="post">
+                                                                @csrf
                                                             <a class="btn btn-primary"
                                                                 href="/admin/editU/{{ $u->id }}">Edit</a>
-                                                                @csrf
+                                                                <a class="btn btn-success" href="/admin/cetak/{{ $u->id }}">Cetak</a>
                                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                                             </form>
                                                         </td>

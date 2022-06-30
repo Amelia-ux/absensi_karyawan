@@ -62,9 +62,9 @@
                                                         <td>
                                                             <form action="/admin/destroyA/{{ $a->id }}"
                                                                 method="post">
+                                                                @csrf
                                                                 <a class="btn btn-primary"
                                                                     href="/admin/editA/{{ $a->id }}">Edit</a>
-                                                                @csrf
                                                                 <button type="submit"
                                                                     class="btn btn-danger">Delete</button>
                                                             </form>

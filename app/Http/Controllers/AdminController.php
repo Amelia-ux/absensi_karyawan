@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -200,14 +201,11 @@ class AdminController extends Controller
             ->with('success', 'Data Karyawan Berhasil Dihapus');
     }
 
-    public function cetakAbsen($user_id)
+    public function cetakAbsen($id)
     {
-        $absen = Absensi::with('id')
-            ->where('user_id', $user_id)->get();
-        $absen->user = User::with('role_id')
-            ->where('id', $user_id)->first();
-
-        $cetakAbsen = PDF::loadview('admin.cetakLaporan', compact('user'));
+        $user = User::where('id', $id)->first();
+        $absen = Absensi::with('User', 'Ket_Absensi')->where('user_id', $id)->first()->orderBy('tgl', 'desc')->paginate(7);
+        $cetakAbsen = PDF::loadview('admin.cetakLaporan', ['user' => $user, 'absen' => $absen]);
         return $cetakAbsen->stream();
     }
 }

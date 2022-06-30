@@ -55,7 +55,6 @@
                     <li class="label">Features</li>
                     <li><a href="/admin/absensi"><i class="ti-view-list-alt"></i>Absensi Karyawan</a></li>
                     <li><a href="/admin/karyawan"><i class="ti-view-list-alt"></i>Karyawan</a></li>
-                    <li><a href="/cetak"><i class="ti-files"></i>Cetak Laporan</a></li>
                     </li>
                     <li><a href="/logout"><i class="ti-close"></i> Logout</a></li>
             </div>

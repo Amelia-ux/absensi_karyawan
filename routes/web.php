@@ -46,6 +46,6 @@ Route::put('admin/updateU/{id}', [AdminController::class, 'updateU']);
 Route::put('admin/updateA/{id}', [AdminController::class, 'updateA']);
 Route::post('admin/destroyU/{email}', [AdminController::class, 'destroyU']);
 Route::post('admin/destroyA/{id}', [AdminController::class, 'destroyA']);
-// Route::get('cetak/{id}', [AdminController::class, 'cetakAbsen'])->name('admin.cetakLaporan');
+Route::get('admin/cetak/{id}', [AdminController::class, 'cetakAbsen'])->name('admin.cetakLaporan');
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
