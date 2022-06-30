@@ -25,7 +25,7 @@ class AdminController extends Controller
     }
 
     public function profil(){
-        return 
+        return view('admin.home');
     }
 
     public function createA()
