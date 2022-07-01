@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col">
                 <h4 class="mb-4">
-                    <center>PT. TRIO KELINCI</center>
+                    <center>PT. JAYA SENTOSA</center>
                     <center>LAPORAN ABSENSI KARYAWAN</center>
                 </h4>
 
