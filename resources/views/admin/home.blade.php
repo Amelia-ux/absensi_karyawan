@@ -19,7 +19,7 @@
                             <div class="page-title">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Table-Basic</li>
+                                   
                                     <form action="/admin/createA" method="post">
                                         @csrf
                                         <button type="submit" class="btn btn-success">Tambah Absensi</button>
